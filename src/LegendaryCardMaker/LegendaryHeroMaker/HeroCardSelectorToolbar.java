@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import LegendaryCardMaker.CardMaker;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.LegendaryDividerMaker.HeroDividerMakerFrame;
 import LegendaryCardMaker.exporters.ExportHomeprintProgressBarDialog;
 
@@ -25,20 +26,20 @@ public class HeroCardSelectorToolbar extends JMenuBar implements ActionListener{
 
 	HeroCardSelector hm;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Printer Studio PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportPrinterStudioPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
-	JMenuItem newCard = new JMenuItem("New Card");
-	JMenuItem editCard = new JMenuItem("Edit Card...");
-	JMenuItem delete = new JMenuItem("Delete Card...");
-	JMenuItem editDivider = new JMenuItem("Edit Divider...");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
+	JMenuItem newCard = new JMenuItem(Messages.getString("Toolbar.NewCard"));
+	JMenuItem editCard = new JMenuItem(Messages.getString("Toolbar.EditCard"));
+	JMenuItem delete = new JMenuItem(Messages.getString("Toolbar.DeleteCard"));
+	JMenuItem editDivider = new JMenuItem(Messages.getString("Toolbar.EditDivider"));
 	
-	JMenuItem exportJPEGHomeprint = new JMenuItem("Export to JPEG for Homeprint...");
+	JMenuItem exportJPEGHomeprint = new JMenuItem(Messages.getString("Toolbar.ExportJPEGHomePrint"));
 	
 	static HeroCardSelectorToolbar tb = null;
 	
@@ -147,7 +148,7 @@ public class HeroCardSelectorToolbar extends JMenuBar implements ActionListener{
 				return;
 			}
 			
-			int outcome = JOptionPane.showOptionDialog(hm.lcmf, "Delete Card?", "Delete Card?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+			int outcome = JOptionPane.showOptionDialog(hm.lcmf, Messages.getString("IHM.DeleteCard"), Messages.getString("IHM.DeleteCard"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 			if (outcome == JOptionPane.YES_OPTION)
 			{
 				hm.h.cards.remove(getCurrentHeroCard());

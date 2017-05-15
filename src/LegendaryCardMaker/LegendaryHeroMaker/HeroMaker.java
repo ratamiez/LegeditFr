@@ -17,10 +17,8 @@ import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,6 +28,7 @@ import LegendaryCardMaker.CardMaker;
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMaker;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.WordDefinition;
 
 public class HeroMaker extends CardMaker {
@@ -51,7 +50,7 @@ public class HeroMaker extends CardMaker {
 	public static int abilityTextFontStyleTemplate = Font.PLAIN;
 	public static Color teamPowerUnderlayColorTemplate = Color.BLACK;
 	public static int teamPowerBlurRadiusTemplate = 5;
-	public static String nameHighlightTemplate = "Blur";
+	public static String nameHighlightTemplate = Messages.getString("Toolbar.Blur");
 	public static DUAL_CLASS_STYLE dualClassStyle = DUAL_CLASS_STYLE.SIDE_BY_SIDE;
 	
 	public static int costSizeTemplate = 120;
@@ -85,7 +84,7 @@ public class HeroMaker extends CardMaker {
 		abilityTextFontStyleTemplate = Font.PLAIN;
 		teamPowerUnderlayColorTemplate = Color.BLACK;
 		teamPowerBlurRadiusTemplate = 5;
-		nameHighlightTemplate = "Blur";
+		nameHighlightTemplate = Messages.getString("Toolbar.Blur");
 		
 		costSizeTemplate = 120;
 		costFontNameTemplate = null;
@@ -122,7 +121,7 @@ public class HeroMaker extends CardMaker {
 		teamPowerUnderlayColor = Color.BLACK;
 		teamBlurRadius = 5;
 		powerBlurRadius = 5;
-		nameHighlight = "Blur";
+		nameHighlight = Messages.getString("Toolbar.Blur");
 		
 		costSize = 120;
 		costFontName = null;
@@ -292,7 +291,7 @@ public class HeroMaker extends CardMaker {
 	public int powerBlurRadius = 5;
 	public boolean powerBlurDouble = true;
 	
-	public String nameHighlight = "Blur";
+	public String nameHighlight = Messages.getString("Toolbar.Blur");
 	
 	public String cardNameFontName = null;
 	public int cardNameFontStyle = Font.PLAIN;
@@ -408,43 +407,43 @@ public class HeroMaker extends CardMaker {
 	public void populateHeroCard()
 	{
 		card = new HeroCard();
-		card.heroName = "Swoop";
-		card.name = "The Friendly One";
+		card.heroName = Messages.getString("Card.Sample.Hero.HeroName");
+		card.name = Messages.getString("Card.Sample.Hero.Name");
 		card.rarity = CardRarity.COMMON;
-		card.cardTeam = Icon.valueOf("AUTOBOT");
-		card.cardPower = Icon.valueOf("INSTINCT");
+		card.cardTeam = Icon.valueOf(Messages.getString("Card.Sample.Hero.Team"));
+		card.cardPower = Icon.valueOf(Messages.getString("Card.Sample.Hero.Power"));
 		card.cost = "3";
 		card.attack = "2";
 		card.recruit = "3";
-		card.abilityText = "<k>Transform <g> <r>Select a player. That player must play an <AUTOBOT> hero from their hand or discard pile that has a <COST> of 5 or less. You gain all effects of that card as if you played it. That player discards the card after this turn.";
+		card.abilityText = "<k>"+Messages.getString("Card.Transform")+" <g> <r>"+Messages.getString("Card.Sample.Hero.AbilityText");
 	}
-	
+
 	public void populateBlankHeroCard()
 	{
 		card = new HeroCard();
-		card.heroName = "Hero";
-		card.name = "Card Name";
+		card.heroName = Messages.getString("Card.Hero");
+		card.name = Messages.getString("Card.CardName");
 		card.rarity = CardRarity.COMMON;
 		card.cardTeam = Icon.valueOf("NONE");
 		card.cardPower = Icon.valueOf("NONE");
 		card.cost = "X";
 		card.attack = null;
 		card.recruit = null;
-		card.abilityText = "Card text";
+		card.abilityText = Messages.getString("Card.CardText");
 	}
 	
 	public static HeroCard getBlankHeroCard()
 	{
 		HeroCard card = new HeroCard();
-		card.heroName = "Hero";
-		card.name = "Card Name";
+		card.heroName = Messages.getString("Card.Hero");
+		card.name = Messages.getString("Card.CardName");
 		card.rarity = CardRarity.COMMON;
 		card.cardTeam = Icon.valueOf("NONE");
 		card.cardPower = Icon.valueOf("NONE");
 		card.cost = "X";
 		card.attack = null;
 		card.recruit = null;
-		card.abilityText = "Card text";
+		card.abilityText = Messages.getString("Card.CardText");
 		return card;
 	}
 	
@@ -562,7 +561,7 @@ public class HeroMaker extends CardMaker {
 	    
 	    
 	    //Draw Name Banner before power and team
-	    if (nameHighlight != null && nameHighlight.equals("Banner"))
+	    if (nameHighlight != null && nameHighlight.equals(Messages.getString("Toolbar.Banner")))
 	    {
 	    	BufferedImage bi = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
 	        Graphics g2 = bi.getGraphics();

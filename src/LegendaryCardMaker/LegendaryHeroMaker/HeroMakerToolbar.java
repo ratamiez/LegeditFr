@@ -23,6 +23,7 @@ import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.JFontChooser;
 import LegendaryCardMaker.LegendaryCardMaker;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.LegendaryHeroMaker.HeroMaker.DUAL_CLASS_STYLE;
 
 public class HeroMakerToolbar extends JMenuBar implements ActionListener{
@@ -30,78 +31,78 @@ public class HeroMakerToolbar extends JMenuBar implements ActionListener{
 	HeroMaker hm;
 	HeroMakerFrame hmf;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Bordered PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportBorderedPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
 	
-	JMenu rarity = new JMenu("Card Rarity");
-	JCheckBoxMenuItem rarityCommon = new JCheckBoxMenuItem("Common");
-	JCheckBoxMenuItem rarityUncommon = new JCheckBoxMenuItem("Uncommon");
-	JCheckBoxMenuItem rarityRare = new JCheckBoxMenuItem("Rare");
+	JMenu rarity = new JMenu(Messages.getString("Card.CardRarity"));
+	JCheckBoxMenuItem rarityCommon = new JCheckBoxMenuItem(Messages.getString("Card.COMMON"));
+	JCheckBoxMenuItem rarityUncommon = new JCheckBoxMenuItem(Messages.getString("Card.PEU_COMMUNE"));
+	JCheckBoxMenuItem rarityRare = new JCheckBoxMenuItem(Messages.getString("Card.RARE"));
 	
-	JMenu team = new JMenu("Team");
+	JMenu team = new JMenu(Messages.getString("Card.Team"));
 	List<JCheckBoxMenuItem> teamItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenu secondaryTeam = new JMenu("Secondary Team");
+	JMenu secondaryTeam = new JMenu(Messages.getString("Card.SecondaryTeam"));
 	List<JCheckBoxMenuItem> secondaryTeamItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenu power = new JMenu("Power");
+	JMenu power = new JMenu(Messages.getString("Card.Power"));
 	List<JCheckBoxMenuItem> powerItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenu secondaryPower = new JMenu("Secondary Power");
+	JMenu secondaryPower = new JMenu(Messages.getString("Card.SecondaryPower"));
 	List<JCheckBoxMenuItem> secondaryPowerItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenu dualStyle = new JMenu("Dual Power Icon Style");
-	JCheckBoxMenuItem dualStyleSideBySide = new JCheckBoxMenuItem("Side by Side");
-	JCheckBoxMenuItem dualStyleHalfAndHalf = new JCheckBoxMenuItem("Half and Half");
-	JCheckBoxMenuItem dualStyleTopAndBottom = new JCheckBoxMenuItem("Top and Bottom");
+	JMenu dualStyle = new JMenu(Messages.getString("Card.DualPowerIconStyle"));
+	JCheckBoxMenuItem dualStyleSideBySide = new JCheckBoxMenuItem(Messages.getString("Card.SideSide"));
+	JCheckBoxMenuItem dualStyleHalfAndHalf = new JCheckBoxMenuItem(Messages.getString("Card.HalfHalf"));
+	JCheckBoxMenuItem dualStyleTopAndBottom = new JCheckBoxMenuItem(Messages.getString("Card.TopBottom"));
 	
-	JMenuItem setCost = new JMenuItem("Set Cost...");
-	JMenuItem setRecruit = new JMenuItem("Set Recruit...");
-	JMenuItem setAttack = new JMenuItem("Set Attack...");
-	JMenuItem setCardName = new JMenuItem("Set Card Name...");
-	JMenuItem setCardNameSize = new JMenuItem("Set Card Name Size...");
-	JMenuItem setHeroNameSize = new JMenuItem("Set Hero Name Size...");
-	JMenuItem setAbilityText = new JMenuItem("Set Ability Text...");
-	JMenuItem setAbilityTextSize = new JMenuItem("Set Ability Text Size...");
-	JMenuItem setBackgroundImage = new JMenuItem("Set Background Image...");
-	JMenuItem setBackgroundZoom = new JMenuItem("Set Background Zoom...");
+	JMenuItem setCost = new JMenuItem(Messages.getString("Toolbar.SetCost"));
+	JMenuItem setRecruit = new JMenuItem(Messages.getString("Toolbar.SetRecruit"));
+	JMenuItem setAttack = new JMenuItem(Messages.getString("Toolbar.SetAttack"));
+	JMenuItem setCardName = new JMenuItem(Messages.getString("Toolbar.SetCardName"));
+	JMenuItem setCardNameSize = new JMenuItem(Messages.getString("Toolbar.SetCardNameSize"));
+	JMenuItem setHeroNameSize = new JMenuItem(Messages.getString("Toolbar.SetHeroNameSize"));
+	JMenuItem setAbilityText = new JMenuItem(Messages.getString("Toolbar.SetAbilityText"));
+	JMenuItem setAbilityTextSize = new JMenuItem(Messages.getString("Toolbar.SetAbilityTextSize"));
+	JMenuItem setBackgroundImage = new JMenuItem(Messages.getString("Toolbar.SetBackgroundImage"));
+	JMenuItem setBackgroundZoom = new JMenuItem(Messages.getString("Toolbar.SetBackgroundZoom"));
 	
-	JMenuItem setTeamPowerColour = new JMenuItem("Set Team/Power Underlay Colour..");
-	JMenuItem setTeamPowerRadius = new JMenuItem("Set Team/Power Blur Radius..");
-	JMenuItem setCardNameColour = new JMenuItem("Set Card Name Colour..");
-	JMenuItem setCardNameFont = new JMenuItem("Set Card Name Font..");
-	JMenuItem setHeroNameColour = new JMenuItem("Set Hero Name Colour..");
-	JMenuItem setHeroNameFont = new JMenuItem("Set Hero Name Font..");
-	JMenuItem setAbilityTextColour = new JMenuItem("Set Ability Text Colour..");
-	JMenuItem setAbilityTextFont = new JMenuItem("Set Ability Text Font..");
+	JMenuItem setTeamPowerColour = new JMenuItem(Messages.getString("Toolbar.SetTeamPowerUnderlayColour"));
+	JMenuItem setTeamPowerRadius = new JMenuItem(Messages.getString("Toolbar.SetTeamPowerBlurRadius"));
+	JMenuItem setCardNameColour = new JMenuItem(Messages.getString("Toolbar.SetCardNameColour"));
+	JMenuItem setCardNameFont = new JMenuItem(Messages.getString("Toolbar.SetCardNameFont"));
+	JMenuItem setHeroNameColour = new JMenuItem(Messages.getString("Toolbar.SetHeroNameColour"));
+	JMenuItem setHeroNameFont = new JMenuItem(Messages.getString("Toolbar.SetHeroNameFont"));
+	JMenuItem setAbilityTextColour = new JMenuItem(Messages.getString("Toolbar.SetAbilityTextColour"));
+	JMenuItem setAbilityTextFont = new JMenuItem(Messages.getString("Toolbar.SetAbilityTextFont"));
 	
-	JMenuItem setCostSize = new JMenuItem("Set Cost Size...");
-	JMenuItem setCostColour = new JMenuItem("Set Cost Colour..");
-	JMenuItem setCostFont = new JMenuItem("Set Cost Font..");
+	JMenuItem setCostSize = new JMenuItem(Messages.getString("Toolbar.SetCostSize"));
+	JMenuItem setCostColour = new JMenuItem(Messages.getString("Toolbar.SetCostColour"));
+	JMenuItem setCostFont = new JMenuItem(Messages.getString("Toolbar.SetCostFont"));
 	
-	JMenuItem setRecruitSize = new JMenuItem("Set Recruit Size...");
-	JMenuItem setRecruitColour = new JMenuItem("Set Recruit Colour..");
-	JMenuItem setRecruitFont = new JMenuItem("Set Recruit Font..");
+	JMenuItem setRecruitSize = new JMenuItem(Messages.getString("Toolbar.SetRecruitSize"));
+	JMenuItem setRecruitColour = new JMenuItem(Messages.getString("Toolbar.SetRecruitColour"));
+	JMenuItem setRecruitFont = new JMenuItem(Messages.getString("Toolbar.SetRecruitFont"));
 	
-	JMenuItem setAttackSize = new JMenuItem("Set Attack Size...");
-	JMenuItem setAttackColour = new JMenuItem("Set Attack Colour..");
-	JMenuItem setAttackFont = new JMenuItem("Set Attack Font..");
+	JMenuItem setAttackSize = new JMenuItem(Messages.getString("Toolbar.SetAttackSize"));
+	JMenuItem setAttackColour = new JMenuItem(Messages.getString("Toolbar.SetAttackColour"));
+	JMenuItem setAttackFont = new JMenuItem(Messages.getString("Toolbar.SetAttackFont"));
 	
-	JMenu nameHighlightType = new JMenu("Name Highlight Type");
-	JCheckBoxMenuItem highlightBlur = new JCheckBoxMenuItem("Blur");
-	JCheckBoxMenuItem highlightBanner = new JCheckBoxMenuItem("Banner");
+	JMenu nameHighlightType = new JMenu(Messages.getString("Toolbar.NameHighlightType"));
+	JCheckBoxMenuItem highlightBlur = new JCheckBoxMenuItem(Messages.getString("Toolbar.Blur"));
+	JCheckBoxMenuItem highlightBanner = new JCheckBoxMenuItem(Messages.getString("Toolbar.Banner"));
 	
-	JMenuItem resetTemplate = new JMenuItem("Reset Template");
+	JMenuItem resetTemplate = new JMenuItem(Messages.getString("Toolbar.ResetTemplate"));
 	
-	JMenuItem setNumberInDeck = new JMenuItem("Set Number In Deck...");
+	JMenuItem setNumberInDeck = new JMenuItem(Messages.getString("Toolbar.SetNumberInDeck"));
 	
-	JCheckBoxMenuItem multiClass = new JCheckBoxMenuItem("Multi-Class Preview");
+	JCheckBoxMenuItem multiClass = new JCheckBoxMenuItem(Messages.getString("Toolbar.MultiClassPreview"));
 	
 	static HeroMakerToolbar tb = null;
 	
@@ -434,10 +435,10 @@ public class HeroMakerToolbar extends JMenuBar implements ActionListener{
 			
 			edit.addSeparator();
 			
-			if (hm.nameHighlight.equals("Blur")) { highlightBlur.setSelected(true); }
+			if (hm.nameHighlight.equals(Messages.getString("Toolbar.Blur"))) { highlightBlur.setSelected(true); }
 			highlightBlur.addActionListener(this);
 			nameHighlightType.add(highlightBlur);
-			if (hm.nameHighlight.equals("Banner")) { highlightBanner.setSelected(true); }
+			if (hm.nameHighlight.equals(Messages.getString("Toolbar.Banner"))) { highlightBanner.setSelected(true); }
 			highlightBanner.addActionListener(this);
 			nameHighlightType.add(highlightBanner);
 			edit.add(nameHighlightType);

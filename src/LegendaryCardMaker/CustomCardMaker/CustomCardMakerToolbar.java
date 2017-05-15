@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.CustomCardMaker.components.BackgroundImageMenuItem;
 import LegendaryCardMaker.CustomCardMaker.components.CardNameMenuItem;
 import LegendaryCardMaker.CustomCardMaker.components.CustomIconMenu;
@@ -34,12 +35,12 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 	
 	JMenu file = new JMenu("File");
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Bordered PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportToBorderedPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
 	
 	static CustomCardMakerToolbar tb = null;
 	
@@ -119,7 +120,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportJPG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.JPEGFile"), "jpg", "jpeg");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -135,7 +136,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToJPEG(bi, chooser.getSelectedFile());
@@ -158,7 +159,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -173,7 +174,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());
@@ -195,7 +196,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPrinterStudioPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -211,7 +212,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());

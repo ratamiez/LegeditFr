@@ -5,7 +5,7 @@ public enum CardRarity {
 	COMMON (5), 
 	UNCOMMON (3), 
 	RARE (1),
-	OFFICER (30),
+	OFFICER(30),
 	;
 	
 	private int count;

@@ -20,33 +20,34 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import LegendaryCardMaker.CardTextDialog;
 import LegendaryCardMaker.Icon;
+import LegendaryCardMaker.Messages;
 
 public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 
 	SchemeMaker hm;
 	SchemeMakerFrame hmf;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Printer Studio PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportPrinterStudioPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
 	
-	JMenu cardTypes = new JMenu("Card Type");
+	JMenu cardTypes = new JMenu(Messages.getString("Toolbar.CardType"));
 	List<JCheckBoxMenuItem> cardTypeItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenuItem setCardName = new JMenuItem("Set Card Name...");
-	JMenuItem setCardNameSize = new JMenuItem("Set Card Name Size...");
-	JMenuItem setCardSubName = new JMenuItem("Set Card Sub Name...");
-	JMenuItem setCardSubNameSize = new JMenuItem("Set Card Sub Name Size...");
-	JMenuItem setCardText = new JMenuItem("Set Card Text...");
-	JMenuItem setCardTextSize = new JMenuItem("Set Card Text Size...");
-	JMenuItem setBackgroundImage = new JMenuItem("Set Background Image...");
-	JMenuItem setBackgroundZoom = new JMenuItem("Set Background Zoom...");
-	JMenuItem setNumberInDeck = new JMenuItem("Set Number In Deck...");
+	JMenuItem setCardName = new JMenuItem(Messages.getString("Toolbar.SetCardName"));
+	JMenuItem setCardNameSize = new JMenuItem(Messages.getString("Toolbar.SetCardNameSize"));
+	JMenuItem setCardSubName = new JMenuItem(Messages.getString("Toolbar.SetCardSubName"));
+	JMenuItem setCardSubNameSize = new JMenuItem(Messages.getString("Toolbar.SetCardSubNameSize"));
+	JMenuItem setCardText = new JMenuItem(Messages.getString("Toolbar.SetCardText"));
+	JMenuItem setCardTextSize = new JMenuItem(Messages.getString("Toolbar.SetCardTextSize"));
+	JMenuItem setBackgroundImage = new JMenuItem(Messages.getString("Toolbar.SetBackgroundImage"));
+	JMenuItem setBackgroundZoom = new JMenuItem(Messages.getString("Toolbar.SetBackgroundZoom"));
+	JMenuItem setNumberInDeck = new JMenuItem(Messages.getString("Toolbar.SetNumberInDeck"));
 	
 	static SchemeMakerToolbar tb = null;
 	
@@ -89,7 +90,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 					
 					for (JCheckBoxMenuItem item : tb.cardTypeItems)
 					{
-						if (item.getText().replace(" ", "_").toUpperCase().equals(enumValue))
+						if (item.getText()./*replace(" ", "_").*/toUpperCase().equals(enumValue))
 						{
 							item.setSelected(true);
 						}
@@ -110,7 +111,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		for (JCheckBoxMenuItem item : cardTypeItems)
 		{
-			if (item.getText().replace(" ", "_").toUpperCase().equals(hm.card.cardType.toString()))
+			if (item.getText()./*replace(" ", "_").*/toUpperCase().equals(hm.card.cardType.toString()))
 			{
 				item.setSelected(true);
 			}
@@ -157,7 +158,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportJPG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.JPEGFile"), "jpg", "jpeg");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -173,7 +174,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToJPEG(bi, chooser.getSelectedFile());
@@ -195,7 +196,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -210,7 +211,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());
@@ -232,7 +233,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPrinterStudioPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -248,7 +249,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());
@@ -286,7 +287,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardName))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Name", hm.card.name);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardName"), hm.card.name);
 			if (s == null) { s = hm.card.name; }
 			if (s != null && s.isEmpty()) { s = null; }
 			hm.card.name = s;
@@ -296,7 +297,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardSubName))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Sub Name", hm.card.subCategory);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardSubName"), hm.card.subCategory);
 			if (s == null) { s = hm.card.subCategory; }
 			if (s != null && s.isEmpty()) { s = null; }
 			hm.card.subCategory = s;
@@ -306,7 +307,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardTextSize))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Ability Text Size", hm.textSize);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterAbilityTextSize"), hm.textSize);
 			if (s == null) { s = "" + hm.textSize; }
 			if (s != null && s.isEmpty()) { s = "" + hm.textSize; }
 			try
@@ -324,7 +325,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardNameSize))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Name Size", hm.cardNameSize);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardNameSize"), hm.cardNameSize);
 			if (s == null) { s = "" + hm.cardNameSize; }
 			if (s != null && s.isEmpty()) { s = "" + hm.cardNameSize; }
 			try
@@ -342,7 +343,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardSubNameSize))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Sub Name Size", hm.subCategorySize);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardSubNameSize"), hm.subCategorySize);
 			if (s == null) { s = "" + hm.subCategorySize; }
 			if (s != null && s.isEmpty()) { s = "" + hm.subCategorySize; }
 			try
@@ -390,7 +391,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setBackgroundZoom))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Background Zoom", hm.card.imageZoom);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterBackgroundZoom"), hm.card.imageZoom);
 			if (s == null) { s = "" + hm.card.imageZoom; }
 			if (s != null && s.isEmpty()) { s = "" + hm.card.imageZoom; }
 			try
@@ -407,7 +408,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setNumberInDeck))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Number in Deck", hm.card.numberInDeck);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterNumberDeck"), hm.card.numberInDeck);
 			if (s == null) { s = "" + hm.card.numberInDeck; }
 			if (s != null && s.isEmpty()) { s = "" + hm.card.numberInDeck; }
 			try
