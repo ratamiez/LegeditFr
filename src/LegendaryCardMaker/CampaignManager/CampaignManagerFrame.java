@@ -6,13 +6,15 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import LegendaryCardMaker.Messages;
+
 public class CampaignManagerFrame extends JDialog {
 
 	
 	
 	public CampaignManagerFrame()
 	{
-		setTitle("Campaign Manager");
+		setTitle(Messages.getString("IHM.CampaignManager"));
 		
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		

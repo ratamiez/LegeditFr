@@ -73,7 +73,7 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 		}
 		
 		String name = displayString;
-		name = name.toUpperCase().replace(" ", "_").replace("-", "_");
+		name = name.toUpperCase();//.replace(" ", "_").replace("-", "_");
 		return name;
 	}
 	
@@ -101,7 +101,7 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 						   {
 							   allowHeadings = true;
 						   }
-						   SchemeCardType s = new SchemeCardType(new Color(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])), split[0], allowHeadings);
+						   SchemeCardType s = new SchemeCardType(new Color(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])), /*split[0]*/Messages.getString("Card."+split[0]), allowHeadings);
 						   schemeCardTypes.add(s);
 						   System.out.println(Messages.getString("Logs.Loaded")+": " + s.getEnumName()); 
 					   }

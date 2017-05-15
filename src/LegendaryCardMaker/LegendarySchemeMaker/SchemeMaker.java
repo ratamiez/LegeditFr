@@ -2,7 +2,6 @@ package LegendaryCardMaker.LegendarySchemeMaker;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,27 +13,17 @@ import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.ImageWriter;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
-import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-
-import org.w3c.dom.Element;
 
 import LegendaryCardMaker.CardMaker;
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMaker;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.WordDefinition;
 
 public class SchemeMaker extends CardMaker {
@@ -119,33 +108,35 @@ public class SchemeMaker extends CardMaker {
 	
 	public void populateSchemeCard()
 	{
+	
+		
 		card = new SchemeCard();
-		card.name = "Desertion of the Dinobots";
+		card.name = Messages.getString("Card.Sample.Scheme.Name");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf("SCHEME");
-		card.cardText = "<k>Setup: <r>8 Twists. Hero deck must include at least 3 <DINOBOT> Heroes. <g> " + 
-				"<k>Special Rules: <r>Heroes in City or from the Villain Deck counts as Villains with <ATTACK> equal to the Hero's <COST> +2. If you defeat the Hero, you gain it. At the start of each players turn, that player must spend <RECRUIT> equal to the number of <DINOBOT> Heroes in the HQ OR choose a <DINOBOT> to enter the City. <g> " +
-				"<k>Twist: <r>Each player chooses a <DINOBOT> from their hand or Discard pile and places it in the Villain Deck. Any player who cannot gains a Wound. Shuffle the Villain Deck. <g> " +
-				"<k>Evil Wins: <r>If 5 <DINOBOT> Heroes escape.";
+		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardText = "<k>"+Messages.getString("Card.Setup")+": <r>"+Messages.getString("Card.Sample.Scheme.Setup")+" <g> " + 
+				"<k>"+Messages.getString("Card.SpecialRules")+": <r>"+Messages.getString("Card.Sample.Scheme.SpecialRules")+" <g> " +
+				"<k>"+Messages.getString("Card.Twist")+": <r>"+Messages.getString("Card.Sample.Scheme.Twist")+" <g> " +
+				"<k>"+Messages.getString("Card.EvilWins")+": <r>"+Messages.getString("Card.Sample.Scheme.EvilWins");
 	}
 	
 	public static SchemeCard getBlankSchemeCard()
 	{
 		SchemeCard card = new SchemeCard();
-		card.name = "Scheme Name";
+		card.name = Messages.getString("Card.SchemeName");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf("SCHEME");
-		card.cardText = "<k>Setup: <r> <g> <k>Twist: <r> <g> <k>Evil Wins: <r>";
+		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardText = "<k>"+Messages.getString("Card.Setup")+": <r> <g> <k>"+Messages.getString("Card.Twist")+": <r> <g> <k>"+Messages.getString("Card.EvilWins")+": <r>";
 		return card;
 	}
 	
 	public void populateBlankSchemeCard()
 	{
 		card = new SchemeCard();
-		card.name = "Scheme Name";
+		card.name = Messages.getString("Card.SchemeName");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf("SCHEME");
-		card.cardText = "<k>Always Leads: <r>Villain Group <g> <k>Master Strike: <r>Some effect.";
+		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardText = "<k>"+Messages.getString("Card.AlwaysLeads")+": <r>"+Messages.getString("Card.VillainGroup")+"<g> <k>"+Messages.getString("Card.MasterStrike")+": <r>"+Messages.getString("Card.Sample.SomeEffect")+".";
 	}
 	
 	public BufferedImage generateCard()
