@@ -503,16 +503,16 @@ public class HeroMaker extends CardMaker {
 		    	
 		    	if (card.cardPower2 != null && card.cardPower != null && !card.cardPower2.equals(Icon.valueOf("NONE")))
 		    	{
-		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower2.toString() + ".png");
+		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower2.toString().toLowerCase() + ".png");
 		    		g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
 		    		
-		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower.toString() + ".png");
+		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower.toString().toLowerCase() + ".png");
 		    		BufferedImage bi = getFadedBackground(ii);
 		    		g.drawImage(resizeImage(new ImageIcon(bi), cardWidth, cardHeight), 0, 0, null);
 		    	}
 		    	else
 		    	{
-		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower.toString() + ".png");
+		    		ii = new ImageIcon(templateFolder + File.separator + "hero_common" + File.separator + "back_" + card.cardPower.toString().toLowerCase() + ".png");
 			    	g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
 		    	}
 	    	}
@@ -533,16 +533,16 @@ public class HeroMaker extends CardMaker {
 	    	{
 	    		if (card.cardPower2 != null && card.cardPower != null && !card.cardPower2.equals(Icon.valueOf("NONE")))
 		    	{
-	    			ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower2.toString() + ".png");
+	    			ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower2.toString().toLowerCase() + ".png");
 			    	g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
 			    	
-		    		ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower.toString() + ".png");
+		    		ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower.toString().toLowerCase() + ".png");
 			    	BufferedImage bi = getFadedBackground(ii);
 			    	g.drawImage(resizeImage(new ImageIcon(bi), cardWidth, cardHeight), 0, 0, null);
 		    	}
 		    	else
 		    	{
-		    		ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower.toString() + ".png");
+		    		ii = new ImageIcon(templateFolder + File.separator + "hero_uncommon" + File.separator + "back_" + card.cardPower.toString().toLowerCase() + ".png");
 			    	g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
 		    	}
 	    	}

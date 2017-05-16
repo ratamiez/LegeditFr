@@ -107,6 +107,7 @@ public class LegendaryCardMaker {
 	}
 	
 	public void processInput(String inputFile)
+	//FL HERE
 	{	
 		heroes = new ArrayList<Hero>();
 		villains = new ArrayList<Villain>();
