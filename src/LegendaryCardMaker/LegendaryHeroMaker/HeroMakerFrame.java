@@ -41,7 +41,7 @@ public class HeroMakerFrame extends JDialog {
 			hc.recruit = "X";
 			hc.attack = "X";
 			hc.cost = "X";
-			hc.abilityText = "<AVENGERS><k>: <r>Card Text goes here.";
+			hc.abilityText = "<AVENGERS><k>: <r>";
 			templateMode = true;
 		}
 		else

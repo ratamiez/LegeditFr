@@ -87,7 +87,7 @@ public class SchemeSelectorMenu extends JMenu implements ActionListener{
 			
 			SchemeCard hc = SchemeMaker.getBlankSchemeCard();
 			hc.name = h.name;
-			hc.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+			hc.cardType = SchemeCardType.valueOf("SCHEME");
 			hc.changed = true;
 			h.cards.add(hc);
 			

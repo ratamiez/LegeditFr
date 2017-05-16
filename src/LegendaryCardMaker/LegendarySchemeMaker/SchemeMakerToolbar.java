@@ -76,21 +76,24 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		for (SchemeCardType type : SchemeCardType.values())
 		{
-			String s = type.toString().substring(0, 1).toUpperCase() + type.toString().substring(1).toLowerCase();
+			/*String s = type.toString().substring(0, 1).toUpperCase() + type.toString().substring(1).toLowerCase();
 			s = s.replace("_", " ");
+			*/
+			String s = Messages.getString("Card."+type.toString());
 			JCheckBoxMenuItem m = new JCheckBoxMenuItem(s);
 			m.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					String enumValue = ((JCheckBoxMenuItem)e.getSource()).getText().replace(" ", "_").toUpperCase();
-					SchemeCardType icon = SchemeCardType.valueOf(enumValue);
+					String displayString = ((JCheckBoxMenuItem)e.getSource()).getText();
+					//String enumValue = ((JCheckBoxMenuItem)e.getSource()).getText().replace(" ", "_").toUpperCase();
+					SchemeCardType icon = SchemeCardType.valueByDisplay(displayString);
 					tb.hm.card.cardType = icon;
 					
 					for (JCheckBoxMenuItem item : tb.cardTypeItems)
 					{
-						if (item.getText()./*replace(" ", "_").*/toUpperCase().equals(enumValue))
+						if (item.getText()./*replace(" ", "_").toUpperCase().*/equals(displayString))
 						{
 							item.setSelected(true);
 						}
@@ -111,7 +114,7 @@ public class SchemeMakerToolbar extends JMenuBar implements ActionListener{
 		
 		for (JCheckBoxMenuItem item : cardTypeItems)
 		{
-			if (item.getText()./*replace(" ", "_").*/toUpperCase().equals(hm.card.cardType.toString()))
+			if (item.getText()./*replace(" ", "_").toUpperCase().*/equals(hm.card.cardType.getDisplayString()))
 			{
 				item.setSelected(true);
 			}

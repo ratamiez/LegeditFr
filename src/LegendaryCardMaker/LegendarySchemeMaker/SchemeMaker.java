@@ -113,7 +113,7 @@ public class SchemeMaker extends CardMaker {
 		card = new SchemeCard();
 		card.name = Messages.getString("Card.Sample.Scheme.Name");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardType = SchemeCardType.valueOf("SCHEME");
 		card.cardText = "<k>"+Messages.getString("Card.Setup")+": <r>"+Messages.getString("Card.Sample.Scheme.Setup")+" <g> " + 
 				"<k>"+Messages.getString("Card.SpecialRules")+": <r>"+Messages.getString("Card.Sample.Scheme.SpecialRules")+" <g> " +
 				"<k>"+Messages.getString("Card.Twist")+": <r>"+Messages.getString("Card.Sample.Scheme.Twist")+" <g> " +
@@ -125,7 +125,7 @@ public class SchemeMaker extends CardMaker {
 		SchemeCard card = new SchemeCard();
 		card.name = Messages.getString("Card.SchemeName");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardType = SchemeCardType.valueOf("SCHEME");
 		card.cardText = "<k>"+Messages.getString("Card.Setup")+": <r> <g> <k>"+Messages.getString("Card.Twist")+": <r> <g> <k>"+Messages.getString("Card.EvilWins")+": <r>";
 		return card;
 	}
@@ -135,7 +135,7 @@ public class SchemeMaker extends CardMaker {
 		card = new SchemeCard();
 		card.name = Messages.getString("Card.SchemeName");
 		card.subCategory = "";
-		card.cardType = SchemeCardType.valueOf(Messages.getString("Card.SCHEME"));
+		card.cardType = SchemeCardType.valueOf("SCHEME");
 		card.cardText = "<k>"+Messages.getString("Card.AlwaysLeads")+": <r>"+Messages.getString("Card.VillainGroup")+"<g> <k>"+Messages.getString("Card.MasterStrike")+": <r>"+Messages.getString("Card.Sample.SomeEffect")+".";
 	}
 	
@@ -167,9 +167,10 @@ public class SchemeMaker extends CardMaker {
 	    if (card.cardText != null)
 	    {
 	    	String cardString = "";
+	    	
 	    	if (card.cardType.doesAllowHeadings())
 	    	{
-	    		cardString = card.cardText;
+	    		cardString = "<h>" + card.cardType.getDisplayString() + "</h>" +card.cardText;
 	    	}
 	    	else
 	    	{

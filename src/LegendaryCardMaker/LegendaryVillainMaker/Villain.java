@@ -9,6 +9,7 @@ import LegendaryCardMaker.LegendaryItem;
 public class Villain extends LegendaryItem implements Comparator<Villain>, Comparable<Villain>  {
 
 	public String name;
+	public String type;
 	public List<VillainCard> cards = new ArrayList<VillainCard>();
 	public boolean changed = false;
 	

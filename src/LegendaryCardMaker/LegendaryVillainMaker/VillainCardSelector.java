@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 
 public class VillainCardSelector extends JDialog {
 
@@ -36,7 +37,7 @@ public class VillainCardSelector extends JDialog {
 		tb = new VillainCardSelectorToolbar(this);
 		this.setJMenuBar(tb);
 		
-		this.setTitle("Card Selector: " + h.name);
+		this.setTitle(Messages.getString("IHM.CardSelector")+": " + h.name+" ("+Messages.getString("Card."+h.type)+")");
 		
 		this.h = h;
 		
@@ -86,7 +87,8 @@ public class VillainCardSelector extends JDialog {
                     list, value, index, isSelected, cellHasFocus);
             label.setIcon(new ImageIcon(getImageSummary(card)));
             label.setHorizontalTextPosition(JLabel.RIGHT);
-            String s = card.name + " (" + card.villainGroup + ")";
+            
+            String s = card.name + " (" + card.villainGroup + ") ["+Messages.getString("Card."+card.cardType)+"]";
             if (card.changed) { s += " *"; }
             label.setText(s);
             

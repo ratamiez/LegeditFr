@@ -114,7 +114,7 @@ public class HeroSelectorMenu extends JMenu implements ActionListener{
 		
 		if (e.getSource().equals(newHero))
 		{
-			String s = JOptionPane.showInputDialog(lcmf, "Enter the Hero Name", "");
+			String s = JOptionPane.showInputDialog(lcmf, Messages.getString("IHM.EnterHeroName"), "");
 			if (s == null) { return; }
 			if (s != null && s.isEmpty()) { return; }
 			
@@ -157,7 +157,7 @@ public class HeroSelectorMenu extends JMenu implements ActionListener{
 				return;
 			}
 			
-			String s = JOptionPane.showInputDialog(lcmf, "Enter the Hero Name", getCurrentHero().name);
+			String s = JOptionPane.showInputDialog(lcmf, Messages.getString("IHM.EnterHeroName"), getCurrentHero().name);
 			if (s == null) { return; }
 			if (s != null && s.isEmpty()) { return; }
 			
@@ -188,7 +188,7 @@ public class HeroSelectorMenu extends JMenu implements ActionListener{
 				return;
 			}
 			
-			int outcome = JOptionPane.showOptionDialog(lcmf, "Delete Hero?", "Delete Hero?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+			int outcome = JOptionPane.showOptionDialog(lcmf, Messages.getString("IHM.DeleteHeros"),Messages.getString("IHM.DeleteHeros"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 			if (outcome == JOptionPane.YES_OPTION)
 			{
 				lcmf.lcm.heroes.remove(getCurrentHero());

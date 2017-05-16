@@ -42,7 +42,7 @@ public class HeroMakerToolbar extends JMenuBar implements ActionListener{
 	
 	JMenu rarity = new JMenu(Messages.getString("Card.CardRarity"));
 	JCheckBoxMenuItem rarityCommon = new JCheckBoxMenuItem(Messages.getString("Card.COMMON"));
-	JCheckBoxMenuItem rarityUncommon = new JCheckBoxMenuItem(Messages.getString("Card.PEU_COMMUNE"));
+	JCheckBoxMenuItem rarityUncommon = new JCheckBoxMenuItem(Messages.getString("Card.UNCOMMON"));
 	JCheckBoxMenuItem rarityRare = new JCheckBoxMenuItem(Messages.getString("Card.RARE"));
 	
 	JMenu team = new JMenu(Messages.getString("Card.Team"));

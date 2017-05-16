@@ -24,6 +24,7 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 	private static List<SchemeCardType> schemeCardTypes = null;
 	
 	private Color bgColor;
+	private String code=null;
 	private String displayString;
 	private boolean allowHeadings = false;
 	
@@ -35,13 +36,13 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 	public SchemeCardType(Color bgColor)
 	{
 		this.bgColor = bgColor;
-		this.displayString = this.toString();
 	}
 	
-	public SchemeCardType(Color bgColor, String displayString, boolean allowHeadings)
+	public SchemeCardType(Color bgColor, String code, boolean allowHeadings)
 	{
 		this.bgColor = bgColor;
-		this.displayString = displayString;
+		this.code = code;
+		this.displayString = Messages.getString("Card."+code);
 		this.allowHeadings = allowHeadings;
 	}
 	
@@ -67,14 +68,11 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 	
 	public String getEnumName()
 	{
-		if (displayString == null)
+		if (code == null)
 		{
 			return "NONE";
 		}
-		
-		String name = displayString;
-		name = name.toUpperCase();//.replace(" ", "_").replace("-", "_");
-		return name;
+		return code;
 	}
 	
 	public static void loadSchemeTypes()
@@ -101,7 +99,7 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 						   {
 							   allowHeadings = true;
 						   }
-						   SchemeCardType s = new SchemeCardType(new Color(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])), /*split[0]*/Messages.getString("Card."+split[0]), allowHeadings);
+						   SchemeCardType s = new SchemeCardType(new Color(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])), split[0], allowHeadings);
 						   schemeCardTypes.add(s);
 						   System.out.println(Messages.getString("Logs.Loaded")+": " + s.getEnumName()); 
 					   }
@@ -138,6 +136,24 @@ public final class SchemeCardType implements Comparator<SchemeCardType>, Compara
 		}
 		return null;
 	}
+	
+	public static SchemeCardType valueByDisplay(String displayString)
+	{
+		if (schemeCardTypes == null)
+		{
+			loadSchemeTypes();
+		}
+		
+		for (SchemeCardType i : schemeCardTypes)
+		{
+			if (i.displayString.equals(displayString))
+			{
+				return i;
+			}
+		}
+		return null;
+	}
+	
 	
 	public static List<SchemeCardType> values()
 	{

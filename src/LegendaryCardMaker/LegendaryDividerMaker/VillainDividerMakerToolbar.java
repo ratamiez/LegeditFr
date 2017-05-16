@@ -6,61 +6,56 @@ import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 
-import LegendaryCardMaker.CardTextDialog;
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 
 public class VillainDividerMakerToolbar extends JMenuBar implements ActionListener{
 
 	VillainDividerMaker hm;
 	VillainDividerMakerFrame hmf;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Printer Studio PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportPrinterStudioPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
 	
-	JMenu dividerCardStyle = new JMenu("Icon Style");
-	JCheckBoxMenuItem divCardNone = new JCheckBoxMenuItem("None");
-	JCheckBoxMenuItem divCardPowerIcons = new JCheckBoxMenuItem("Power Icons");
+	JMenu dividerCardStyle = new JMenu(Messages.getString("Toolbar.IconStyle"));
+	JCheckBoxMenuItem divCardNone = new JCheckBoxMenuItem(Messages.getString("Toolbar.None"));
+	JCheckBoxMenuItem divCardPowerIcons = new JCheckBoxMenuItem(Messages.getString("Toolbar.PowerIcons"));
 	
-	JMenu dividerBodyStyle = new JMenu("Body Style");
-	JCheckBoxMenuItem divStyleImages = new JCheckBoxMenuItem("Images");
-	JCheckBoxMenuItem divStyleTeamLogo = new JCheckBoxMenuItem("Team Logo");
+	JMenu dividerBodyStyle = new JMenu(Messages.getString("Toolbar.BodyStyle"));
+	JCheckBoxMenuItem divStyleImages = new JCheckBoxMenuItem(Messages.getString("Toolbar.Images"));
+	JCheckBoxMenuItem divStyleTeamLogo = new JCheckBoxMenuItem(Messages.getString("Toolbar.TeamLogo"));
 	
-	JMenu dividerIcon = new JMenu("Icon");
-	JMenu dividerIconPower = new JMenu("Powers");
-	JMenu dividerIconTeam = new JMenu("Teams");
-	JMenu dividerIconAttributes = new JMenu("Attributes");
+	JMenu dividerIcon = new JMenu(Messages.getString("Card.Icon"));
+	JMenu dividerIconPower = new JMenu(Messages.getString("Card.Powers"));
+	JMenu dividerIconTeam = new JMenu(Messages.getString("Card.Teams"));
+	JMenu dividerIconAttributes = new JMenu(Messages.getString("Card.Attributes"));
 	
-	JMenuItem setBackgroundImage = new JMenuItem("Set Background Image...");
-	JMenuItem setBackgroundZoom = new JMenuItem("Set Background Zoom...");
+	JMenuItem setBackgroundImage = new JMenuItem(Messages.getString("Toolbar.SetBackgroundImage"));
+	JMenuItem setBackgroundZoom = new JMenuItem(Messages.getString("Toolbar.SetBackgroundZoom"));
 	
-	JMenuItem setForegroundImage = new JMenuItem("Set Foreground Image...");
-	JMenuItem setForegroundZoom = new JMenuItem("Set Foreground Zoom...");
+	JMenuItem setForegroundImage = new JMenuItem(Messages.getString("Toolbar.SetForegroundImage"));
+	JMenuItem setForegroundZoom = new JMenuItem(Messages.getString("Toolbar.SetForegroundZoom"));
 	
-	JMenuItem resetImage = new JMenuItem("Reset Image");
+	JMenuItem resetImage = new JMenuItem(Messages.getString("Toolbar.ResetImage"));
 	
-	JCheckBoxMenuItem opaqueTitleBar = new JCheckBoxMenuItem("Opaque Title Bar");
-	JMenuItem opaqueTitleColour = new JMenuItem("Opaque Title Bar Colour...");
+	JCheckBoxMenuItem opaqueTitleBar = new JCheckBoxMenuItem(Messages.getString("Toolbar.OpaqueTitleBar"));
+	JMenuItem opaqueTitleColour = new JMenuItem(Messages.getString("Toolbar.OpaqueTitleBarColour"));
 	
 	static VillainDividerMakerToolbar tb = null;
 	
@@ -345,7 +340,7 @@ public class VillainDividerMakerToolbar extends JMenuBar implements ActionListen
 		
 		if (e.getSource().equals(setForegroundZoom))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Background Zoom", hm.villain.imageZoom);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterBackgroundZoom"), hm.villain.imageZoom);
 			if (s == null) { s = "" + hm.villain.imageZoom; }
 			if (s != null && s.isEmpty()) { s = "" + hm.villain.imageZoom; }
 			try
@@ -392,7 +387,7 @@ public class VillainDividerMakerToolbar extends JMenuBar implements ActionListen
 		
 		if (e.getSource().equals(setBackgroundZoom))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Background Zoom", LegendaryCardMakerFrame.lcmf.lcm.dbImageZoom);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterBackgroundZoom"), LegendaryCardMakerFrame.lcmf.lcm.dbImageZoom);
 			if (s == null) { s = "" + LegendaryCardMakerFrame.lcmf.lcm.dbImageZoom; }
 			if (s != null && s.isEmpty()) { s = "" + LegendaryCardMakerFrame.lcmf.lcm.dbImageZoom; }
 			try
@@ -422,7 +417,7 @@ public class VillainDividerMakerToolbar extends JMenuBar implements ActionListen
 		if (e.getSource().equals(opaqueTitleColour))
 		{
 			JColorChooser chooser = new JColorChooser();
-			Color outcome = chooser.showDialog(hmf, "Select title bar colour...", LegendaryCardMakerFrame.lcmf.lcm.dividerTitleBarColour);
+			Color outcome = chooser.showDialog(hmf, Messages.getString("IHM.SelectTitleBarColour"), LegendaryCardMakerFrame.lcmf.lcm.dividerTitleBarColour);
 			if (outcome != null)
 			{
 				hmf.setCursor (Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

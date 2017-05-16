@@ -33,7 +33,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 	CustomCardMaker hm;
 	CustomCardMakerFrame hmf;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
 	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
 	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));

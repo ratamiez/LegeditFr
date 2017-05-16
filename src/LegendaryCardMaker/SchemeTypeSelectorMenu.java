@@ -67,7 +67,7 @@ public class SchemeTypeSelectorMenu extends JMenu implements ActionListener{
 			}
 			
 			boolean headings = false;
-			int outcome = JOptionPane.showConfirmDialog(LegendaryCardMakerFrame.lcmf, Messages.getString("IHM.CustomHeadings"), Messages.getString("Toolbar.CustomHeadings"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int outcome = JOptionPane.showConfirmDialog(LegendaryCardMakerFrame.lcmf, Messages.getString("IHM.CustomHeadings"), Messages.getString("IHM.CustomHeadings"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (outcome == JOptionPane.YES_OPTION)
 			{
 				headings = true;
@@ -77,7 +77,7 @@ public class SchemeTypeSelectorMenu extends JMenu implements ActionListener{
 				headings = false;
 			}
 			
-			SchemeCardType type = new SchemeCardType(bgColor, name.toUpperCase(), headings);
+			SchemeCardType type = new SchemeCardType(bgColor, name, headings);
 			SchemeCardType.values().add(type);
 			
 			getSchemeTypeListModel().addElement(type);

@@ -16,9 +16,17 @@ public final class Messages {
 		if (messages == null) {
 			frLocale = new Locale("fr","FR");
 			currentLocale = frLocale;
-			messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+				messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 		}
-		return messages.getString(key);
+		String translation = "Introuvable";
+		
+		try {
+			translation = messages.getString(key);
+		} catch (Exception e) {
+			System.out.println("========================> "+key+" introuvable");
+		}
+
+		return translation;
 	}
 	
 }

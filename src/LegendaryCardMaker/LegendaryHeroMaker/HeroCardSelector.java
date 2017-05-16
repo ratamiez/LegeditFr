@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 
 public class HeroCardSelector extends JDialog {
 
@@ -36,7 +37,7 @@ public class HeroCardSelector extends JDialog {
 		tb = new HeroCardSelectorToolbar(this);
 		this.setJMenuBar(tb);
 		
-		this.setTitle("Card Selector: " + h.name);
+		this.setTitle(Messages.getString("IHM.CardSelector")+": " + h.name);
 		
 		this.h = h;
 		
@@ -94,7 +95,7 @@ public class HeroCardSelector extends JDialog {
             	label.setIcon(card.imageSummary);
             }
             label.setHorizontalTextPosition(JLabel.RIGHT);
-            String s = card.name + " (" + card.rarity.toString() + ")";
+            String s = card.name + " (" + Messages.getString("Card."+card.rarity.toString()) + ")";
             if (card.changed) { s += " *"; }
             label.setText(s);
             

@@ -20,44 +20,45 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import LegendaryCardMaker.CardTextDialog;
 import LegendaryCardMaker.Icon;
+import LegendaryCardMaker.Messages;
 
 public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 
 	VillainMaker hm;
 	VillainMakerFrame hmf;
 	
-	JMenu file = new JMenu("File");
+	JMenu file = new JMenu(Messages.getString("Toolbar.File"));
 	
-	JMenuItem exportJPG = new JMenuItem("Export to JPEG...");
-	JMenuItem exportPNG = new JMenuItem("Export to PNG...");
-	JMenuItem exportPrinterStudioPNG = new JMenuItem("Export to Printer Studio PNG...");
-	JMenuItem close = new JMenuItem("Close");
+	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
+	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportPrinterStudioPNG"));
+	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
-	JMenu edit = new JMenu("Edit");
+	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));
 	
-	JMenu rarity = new JMenu("Card Type");
-	JCheckBoxMenuItem cardTypeHenchmen = new JCheckBoxMenuItem("Henchmen");
-	JCheckBoxMenuItem cardTypeVillain = new JCheckBoxMenuItem("Villain");
-	JCheckBoxMenuItem cardTypeMastermind = new JCheckBoxMenuItem("Mastermind");
-	JCheckBoxMenuItem cardTypeMastermindTactic = new JCheckBoxMenuItem("Mastermind Tactic");
-	JCheckBoxMenuItem cardTypeBystander = new JCheckBoxMenuItem("Bystander");
+	JMenu rarity = new JMenu(Messages.getString("Toolbar.CardType"));
+	JCheckBoxMenuItem cardTypeHenchmen = new JCheckBoxMenuItem(Messages.getString("Card.Henchmen"));
+	JCheckBoxMenuItem cardTypeVillain = new JCheckBoxMenuItem(Messages.getString("Card.Villain"));
+	JCheckBoxMenuItem cardTypeMastermind = new JCheckBoxMenuItem(Messages.getString("Card.Mastermind"));
+	JCheckBoxMenuItem cardTypeMastermindTactic = new JCheckBoxMenuItem(Messages.getString("Card.MastermindTactic"));
+	JCheckBoxMenuItem cardTypeBystander = new JCheckBoxMenuItem(Messages.getString("Card.Bystander"));
 	
-	JMenu team = new JMenu("Team");
+	JMenu team = new JMenu(Messages.getString("Card.Team"));
 	List<JCheckBoxMenuItem> teamItems = new ArrayList<JCheckBoxMenuItem>();
 	
 	//JMenu power = new JMenu("Power");
 	//List<JCheckBoxMenuItem> powerItems = new ArrayList<JCheckBoxMenuItem>();
 	
-	JMenuItem setCost = new JMenuItem("Set Cost...");
-	JMenuItem setVictory = new JMenuItem("Set Victory Points...");
-	JMenuItem setAttack = new JMenuItem("Set Attack...");
-	JMenuItem setCardName = new JMenuItem("Set Card Name...");
-	JMenuItem setCardNameSize = new JMenuItem("Set Card Name Size...");
-	JMenuItem setAbilityText = new JMenuItem("Set Ability Text...");
-	JMenuItem setAbilityTextSize = new JMenuItem("Set Ability Text Size...");
-	JMenuItem setBackgroundImage = new JMenuItem("Set Background Image...");
-	JMenuItem setBackgroundZoom = new JMenuItem("Set Background Zoom...");
-	JMenuItem setNumberInDeck = new JMenuItem("Set Number In Deck...");
+	JMenuItem setCost = new JMenuItem(Messages.getString("Toolbar.SetCost"));
+	JMenuItem setVictory = new JMenuItem(Messages.getString("Toolbar.SetVictoryPoints"));
+	JMenuItem setAttack = new JMenuItem(Messages.getString("Toolbar.SetAttack"));
+	JMenuItem setCardName = new JMenuItem(Messages.getString("Toolbar.SetCardName"));
+	JMenuItem setCardNameSize = new JMenuItem(Messages.getString("Toolbar.SetCardNameSize"));
+	JMenuItem setAbilityText = new JMenuItem(Messages.getString("Toolbar.SetAbilityText"));
+	JMenuItem setAbilityTextSize = new JMenuItem(Messages.getString("Toolbar.SetAbilityTextSize"));
+	JMenuItem setBackgroundImage = new JMenuItem(Messages.getString("Toolbar.SetBackgroundImage"));
+	JMenuItem setBackgroundZoom = new JMenuItem(Messages.getString("Toolbar.SetBackgroundZoom"));
+	JMenuItem setNumberInDeck = new JMenuItem(Messages.getString("Toolbar.SetNumberInDeck"));
 	
 	static VillainMakerToolbar tb = null;
 	
@@ -306,7 +307,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportJPG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("JPEG file", "jpg", "jpeg");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.JPEGFile"), "jpg", "jpeg");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -322,7 +323,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToJPEG(bi, chooser.getSelectedFile());
@@ -344,7 +345,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -359,7 +360,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());
@@ -381,7 +382,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(exportPrinterStudioPNG))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("PNG file", "png");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.PNGFile"), "png");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showSaveDialog(this);
@@ -397,7 +398,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 					}
 					if (chooser.getSelectedFile().exists())
 					{
-						int confirm = JOptionPane.showConfirmDialog(hmf, "Overwrite File?", "File Exists", JOptionPane.YES_OPTION);
+						int confirm = JOptionPane.showConfirmDialog(hmf, Messages.getString("IHM.OverwriteFile"), Messages.getString("IHM.FileExists"), JOptionPane.YES_OPTION);
 						if (confirm == JOptionPane.YES_OPTION)
 						{
 							hm.exportToPNG(bi, chooser.getSelectedFile());
@@ -430,7 +431,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setVictory))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Recruit", hm.card.victory);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterRecruit"), hm.card.victory);
 			if (s == null) { s = hm.card.victory; }
 			if (s != null && s.isEmpty()) { s = null; }
 			hm.card.victory = s;
@@ -442,7 +443,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setAttack))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Attack", hm.card.attack);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterAttack"), hm.card.attack);
 			if (s == null) { s = hm.card.attack; }
 			if (s != null && s.isEmpty()) { s = null; }
 			hm.card.attack = s;
@@ -465,7 +466,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardName))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Name", hm.card.name);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardName"), hm.card.name);
 			if (s == null) { s = hm.card.name; }
 			if (s != null && s.isEmpty()) { s = null; }
 			hm.card.name = s;
@@ -475,7 +476,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setAbilityTextSize))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Ability Text Size", hm.textSize);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterAbilityTextSize"), hm.textSize);
 			if (s == null) { s = "" + hm.textSize; }
 			if (s != null && s.isEmpty()) { s = "" + hm.textSize; }
 			try
@@ -493,7 +494,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setCardNameSize))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Card Name Size", hm.cardNameSize);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterCardNameSize"), hm.cardNameSize);
 			if (s == null) { s = "" + hm.cardNameSize; }
 			if (s != null && s.isEmpty()) { s = "" + hm.cardNameSize; }
 			try
@@ -517,7 +518,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		if (e.getSource().equals(setBackgroundImage))
 		{
 			JFileChooser chooser = new JFileChooser();
-			FileNameExtensionFilter filter1 = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "bmp");
+			FileNameExtensionFilter filter1 = new FileNameExtensionFilter(Messages.getString("IHM.ImageFiles"), "png", "jpeg", "jpg", "bmp");
 		    chooser.addChoosableFileFilter(filter1);
 		    chooser.setFileFilter(filter1);
 			int outcome = chooser.showOpenDialog(hmf);
@@ -546,7 +547,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setBackgroundZoom))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Background Zoom", hm.card.imageZoom);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterBackgroundZoom"), hm.card.imageZoom);
 			if (s == null) { s = "" + hm.card.imageZoom; }
 			if (s != null && s.isEmpty()) { s = "" + hm.card.imageZoom; }
 			try
@@ -565,7 +566,7 @@ public class VillainMakerToolbar extends JMenuBar implements ActionListener{
 		
 		if (e.getSource().equals(setNumberInDeck))
 		{
-			String s = JOptionPane.showInputDialog(hmf, "Enter the Number in Deck", hm.card.numberInDeck);
+			String s = JOptionPane.showInputDialog(hmf, Messages.getString("IHM.EnterNumberDeck"), hm.card.numberInDeck);
 			if (s == null) { s = "" + hm.card.numberInDeck; }
 			if (s != null && s.isEmpty()) { s = "" + hm.card.numberInDeck; }
 			try

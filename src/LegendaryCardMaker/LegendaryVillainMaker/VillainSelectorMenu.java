@@ -84,6 +84,7 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			
 			Villain h = new Villain();
 			h.name = s;
+			h.type = "Villains";
 			h.changed = true;
 			
 			VillainCard hc = VillainMaker.getBlankVillainCard();
@@ -130,9 +131,11 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			
 			Villain h = new Villain();
 			h.name = s;
+			h.type = "Henchmen";
 			h.changed = true;
 			
 			VillainCard hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.HENCHMEN.getCount();
@@ -152,9 +155,11 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			
 			Villain h = new Villain();
 			h.name = s;
+			h.type = "Mastermind";
 			h.changed = true;
 			
 			VillainCard hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.MASTERMIND.getCount();
@@ -164,6 +169,7 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			h.cards.add(hc);
 			
 			hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.MASTERMIND_TACTIC.getCount();
@@ -172,6 +178,7 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			h.cards.add(hc);
 			
 			hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.MASTERMIND_TACTIC.getCount();
@@ -180,6 +187,7 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			h.cards.add(hc);
 			
 			hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.MASTERMIND_TACTIC.getCount();
@@ -188,6 +196,7 @@ public class VillainSelectorMenu extends JMenu implements ActionListener{
 			h.cards.add(hc);
 			
 			hc = VillainMaker.getBlankVillainCard();
+			hc.name=s;
 			hc.villain = h;
 			hc.villainGroup = h.name;
 			hc.numberInDeck = VillainCardType.MASTERMIND_TACTIC.getCount();

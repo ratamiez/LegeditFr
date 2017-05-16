@@ -466,7 +466,7 @@ public class LegendaryCardMakerFrame extends JFrame {
             {
             	if (lcmf.lcm.doChangesExist())
     			{
-    				int outcome = JOptionPane.showOptionDialog(lcmf, "Save Changes?", "Save Changes", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+    				int outcome = JOptionPane.showOptionDialog(lcmf, Messages.getString("IHM.SaveChanges"), Messages.getString("IHM.SaveChanges"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
     				if (outcome == JOptionPane.YES_OPTION)
     				{
     					if (lcmf.lcm.currentFile != null && new File(lcmf.lcm.currentFile).exists())
@@ -623,6 +623,7 @@ public class LegendaryCardMakerFrame extends JFrame {
             label.setHorizontalTextPosition(JLabel.RIGHT);
             
             String s = villain.name;
+            s = s + " ["+Messages.getString("Card."+villain.type)+"]";
             boolean changed = false;
             for (VillainCard vc : villain.cards)
             {
@@ -698,7 +699,7 @@ public class LegendaryCardMakerFrame extends JFrame {
             String s = villain.name;
             if (villain.cardType != null)
             {
-            	s +=  " (" +  villain.cardType.toString() + ")";
+            	s +=  " (" +  Messages.getString("Card."+villain.cardType.toString()) + ")";
             }
             if (villain.changed) { s += " *"; }
             label.setText(s);
@@ -951,7 +952,7 @@ public class LegendaryCardMakerFrame extends JFrame {
 			entry.getValue().cardListModel.clear();
 		}
 		
-		setTitle(LegendaryCardMakerFrame.FRAME_NAME + " - [Untitled]");
+		setTitle(LegendaryCardMakerFrame.FRAME_NAME + " - ["+Messages.getString("Card.Untitled")+"]");
 		
 	}
 }

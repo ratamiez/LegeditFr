@@ -23,6 +23,7 @@ public class HeroCard {
 	public String heroName;
 	public int heroNameSize;
 	public CardRarity rarity;
+	public String rarityText;
 	public Icon cardTeam;
 	public Icon cardTeam2;
 	public Icon cardPower;

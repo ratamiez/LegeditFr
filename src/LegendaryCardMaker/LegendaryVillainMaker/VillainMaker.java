@@ -13,28 +13,18 @@ import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.ImageWriter;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
-import javax.imageio.stream.ImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-
-import org.w3c.dom.Element;
 
 import LegendaryCardMaker.CardMaker;
 import LegendaryCardMaker.Icon;
 import LegendaryCardMaker.LegendaryCardMaker;
 import LegendaryCardMaker.LegendaryCardMakerFrame;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.WordDefinition;
 
 public class VillainMaker extends CardMaker {
@@ -347,22 +337,22 @@ public class VillainMaker extends CardMaker {
 	    	String villainGroup = card.villainGroup;
 	    	if (card.cardType != null && card.cardType.equals(VillainCardType.VILLAIN))
 		    {
-		    	villainGroup = "Villain - " + villainGroup;
+		    	villainGroup = Messages.getString("Card.Villain")+" - " + villainGroup;
 		    	villainGroup = villainGroup.toUpperCase();
 		    }
 		    if (card.cardType != null && card.cardType.equals(VillainCardType.HENCHMEN))
 		    {
-		    	villainGroup = "Henchman Villain";
+		    	villainGroup = Messages.getString("Card.Henchman")+" "+Messages.getString("Card.Villain");
 		    	villainGroup = villainGroup.toUpperCase();
 		    }
 		    if (card.cardType != null && card.cardType.equals(VillainCardType.MASTERMIND))
 		    {	
-		    	villainGroup = "Mastermind";
+		    	villainGroup = Messages.getString("Card.Mastermind");
 		    	villainGroup = villainGroup.toUpperCase();
 		    }
 		    if (card.cardType != null && card.cardType.equals(VillainCardType.MASTERMIND_TACTIC))
 		    {	
-		    	villainGroup = "Mastermind Tactic - " + card.villain.name;
+		    	villainGroup = Messages.getString("Card.MastermindTactic")+" - " + card.villain.name;
 		    	villainGroup = villainGroup.toUpperCase();
 		    }
 		    if (card.cardType != null && card.cardType.equals(VillainCardType.BYSTANDER))

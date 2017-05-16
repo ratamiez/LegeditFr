@@ -108,7 +108,7 @@
  alignmenthorizontal="left"
  alignmentvertical="top"
  allowchange="true"
- defaultvalue="Card Text."
+ defaultvalue=""
  colour="#000000"
  textsize="28"
  rectxarray="75,675,675,565,565,75"
