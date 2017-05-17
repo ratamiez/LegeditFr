@@ -378,7 +378,7 @@ public class VillainMaker extends CardMaker {
 		    	Font font = null;
 		    	try
 		    	{
-		    	font = Font.createFont(Font.TRUETYPE_FONT, new File("Percolator.otf"));
+		    	font = Font.createFont(Font.TRUETYPE_FONT, new File("Percolator.ttf"));
 		        font = font.deriveFont((float)villainGroupSize);
 		        g2.setFont(font);
 		    	}

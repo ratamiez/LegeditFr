@@ -28,7 +28,11 @@ public class Villain extends LegendaryItem implements Comparator<Villain>, Compa
 	{
 		String str = "";
 		
-		str += "VILLAIN;" + name + "\n\n";
+		if (type == null) {
+			str += "VILLAIN;" + name + "\n\n";
+		} else {
+			str += "VILLAIN;" + type + ";" + name + "\n\n";
+		}
 		
 		if (imagePath != null)
 			str += "VFIMAGEPATH;" + imagePath + "\n";

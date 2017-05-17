@@ -1,14 +1,12 @@
 package LegendaryCardMaker.exporters;
 
-import java.awt.Component;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JDialog;
-import javax.swing.JScrollPane;
 
 import LegendaryCardMaker.LegendaryCardMakerFrame;
 import LegendaryCardMaker.LegendaryItem;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.LegendaryHeroMaker.Hero;
 import LegendaryCardMaker.LegendarySchemeMaker.SchemeCard;
 import LegendaryCardMaker.LegendaryVillainMaker.Villain;
@@ -24,7 +22,7 @@ public class ItemSelectorDialog extends JDialog {
 		
 		setSize(400, 500);
 		
-		setTitle("Select Items");
+		setTitle(Messages.getString("IHM.SelectItems"));
 		
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
@@ -32,7 +30,7 @@ public class ItemSelectorDialog extends JDialog {
 		
 		for (Hero h : LegendaryCardMakerFrame.lcmf.lcm.heroes)
 		{
-			checklist.addCheckListItem("Hero - " + h.name, h);
+			checklist.addCheckListItem(Messages.getString("Card.Hero")+" - " + h.name, h);
 		}
 		
 		for (Villain h : LegendaryCardMakerFrame.lcmf.lcm.villains)
@@ -41,32 +39,32 @@ public class ItemSelectorDialog extends JDialog {
 			{
 				for (VillainCard vc : h.cards)
 				{
-					checklist.addCheckListItem("Bystander - " + h.name, h);
+					checklist.addCheckListItem(Messages.getString("Card.Bystander")+" - " + h.name, h);
 				}
 			}
 			else if (h.name.equals("system_wound_villain"))
 			{
 				for (VillainCard vc : h.cards)
 				{
-					checklist.addCheckListItem("Wound - " + h.name, h);
+					checklist.addCheckListItem(Messages.getString("Card.Wound")+" - " + h.name, h);
 				}
 			}
 			else if (h.name.equals("system_bindings_villain"))
 			{
 				for (VillainCard vc : h.cards)
 				{
-					checklist.addCheckListItem("Bindings - " + h.name, h);
+					checklist.addCheckListItem(Messages.getString("Card.Bindings")+" - " + h.name, h);
 				}
 			}
 			else
 			{
-				checklist.addCheckListItem("Villain - " + h.name, h);
+				checklist.addCheckListItem(Messages.getString("Card.Villain")+" - " + h.name, h);
 			}
 		}
 		
 		for (SchemeCard h : LegendaryCardMakerFrame.lcmf.lcm.schemes)
 		{
-			checklist.addCheckListItem("Scheme - " + h.name + " (" + h.cardType.getDisplayString() + ")", h);
+			checklist.addCheckListItem(Messages.getString("Card.Scheme")+" - " + h.name + " (" + h.cardType.getDisplayString() + ")", h);
 		}
 		
 		this.add(checklist);

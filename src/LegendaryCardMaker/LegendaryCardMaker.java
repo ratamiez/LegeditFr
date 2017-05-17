@@ -594,16 +594,25 @@ public class LegendaryCardMaker {
 					   if (line.replace("VILLAIN;", "").equals("system_bystander_villain"))
 					   {
 						   v = bystanderVillain;
-					   }
-					   else if (line.replace("VILLAIN;", "").equals("system_wound_villain"))
+					   } else if (line.replace("VILLAIN;", "").equals("system_wound_villain"))
 					   {
 						   v = woundVillain;
-					   }
-					   else if (line.replace("VILLAIN;", "").equals("system_bindings_villain"))
+					   } else if (line.replace("VILLAIN;", "").equals("system_bindings_villain"))
 					   {
 						   v = bindingsVillain;
-					   }
-					   else
+					   } else if (line.startsWith("VILLAIN;Henchmen;")) {
+						   v.name = line.replace("VILLAIN;Henchmen;", "");
+						   v.type = "Henchmen";
+						   villains.add(v);
+					   } else if (line.startsWith("VILLAIN;Villains;")) {
+						   v.name = line.replace("VILLAIN;Villains;", "");
+						   v.type = "Villains";
+						   villains.add(v);
+					   } else if (line.startsWith("VILLAIN;Mastermind;")) {
+						   v.name = line.replace("VILLAIN;Mastermind;", "");
+						   v.type = "Mastermind";
+						   villains.add(v);
+					   } else 
 					   {
 						   v.name = line.replace("VILLAIN;", "");
 						   villains.add(v);
@@ -763,6 +772,7 @@ public class LegendaryCardMaker {
 					   sm.exportFolder = exportFolder;
 					   sc = new SchemeCard();
 					   sc.name = line.replace("SCHEME;", "");
+					   sc.cardType = SchemeCardType.valueOf("SCHEME");
 					   schemes.add(sc);
 				   }
 				   
@@ -1042,7 +1052,7 @@ public class LegendaryCardMaker {
 			
 			if (v.cards.get(v.cards.size() - 1).cardType.equals(VillainCardType.VILLAIN))
 			{
-				bwDiv.write("VILLAIN;"+v.name+";"+v.cards.get(v.cards.size() - 1).cardTeam.getEnumName());
+				bwDiv.write("VILLAIN;"+v.name+";"+v.type+";"+v.cards.get(v.cards.size() - 1).cardTeam.getEnumName());
 				bwDiv.newLine();
 			}
 			
