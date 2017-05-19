@@ -37,7 +37,7 @@ public class CustomCardMakerToolbar extends JMenuBar implements ActionListener{
 	
 	JMenuItem exportJPG = new JMenuItem(Messages.getString("Toolbar.ExportJPEG"));
 	JMenuItem exportPNG = new JMenuItem(Messages.getString("Toolbar.ExportPNG"));
-	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportToBorderedPNG"));
+	JMenuItem exportPrinterStudioPNG = new JMenuItem(Messages.getString("Toolbar.ExportBorderedPNG"));
 	JMenuItem close = new JMenuItem(Messages.getString("Toolbar.Close"));
 	
 	JMenu edit = new JMenu(Messages.getString("Toolbar.Edit"));

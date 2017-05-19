@@ -274,6 +274,52 @@ public class VillainMaker extends CardMaker {
 	    //System.out.println("TIMING " + timeCount++ + ": " + new Date().getTime());
 	    
 	    // Card Name
+	    if (card.cardType != null && (card.cardType.equals(VillainCardType.BYSTANDER) || card.cardType.equals(VillainCardType.WOUND)) )
+	    {
+	    	// Draw Bystander on the card
+	    	BufferedImage bi = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
+	    	Graphics2D g2 = getGraphics(bi);
+	    	g2.setColor(Color.WHITE);
+	    	
+	    	Font font = null;
+	    	try
+	    	{
+	    	font = Font.createFont(Font.TRUETYPE_FONT, new File("Percolator.ttf"));
+	        font = font.deriveFont((float)cardNameSize);
+	        g2.setFont(font);
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		e.printStackTrace();
+	    		
+	    		font = new Font("Percolator", Font.PLAIN, cardNameSize);
+	    		g2.setFont(font);
+	    	}
+	        g2.setFont(font);
+	        FontMetrics metrics = g2.getFontMetrics(font);
+	        g2 = setGraphicsHints(g2);
+	        String textToDraw = Messages.getString("Card."+card.cardType.toString()).toUpperCase();
+	        int x=0,y=0;
+	        if (card.cardType.equals(VillainCardType.BYSTANDER)) {
+	        	x= 144;
+	        	y = 815;
+	        } else if  (card.cardType.equals(VillainCardType.WOUND)) {
+	        	x= 104;
+	        	y = 795;
+	        }
+	        g2.drawString(textToDraw, x , y);
+	    	if (includeBlurredBGName)
+	    	{
+	    		drawUnderlay(bi, g2, type, 0, 0, cardNameBlurRadius, cardNameBlurDouble, expandCardName);
+	    	}
+	    	
+	        g2.drawString(textToDraw, x , y);
+	    	
+	    	g.drawImage(bi, 0, 0, null);
+	    	
+	    	g2.dispose();	    	
+	    	
+	    }
 	    if (card.name != null)
 	    {
 	    	BufferedImage bi = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);

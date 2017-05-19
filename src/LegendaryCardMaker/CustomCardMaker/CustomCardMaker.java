@@ -3,6 +3,8 @@ package LegendaryCardMaker.CustomCardMaker;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -28,10 +30,13 @@ import org.w3c.dom.NodeList;
 
 import LegendaryCardMaker.CardMaker;
 import LegendaryCardMaker.Icon;
+import LegendaryCardMaker.Messages;
 import LegendaryCardMaker.CustomCardMaker.structure.CustomCard;
 import LegendaryCardMaker.CustomCardMaker.structure.CustomElement;
 import LegendaryCardMaker.CustomCardMaker.structure.CustomTemplate;
 import LegendaryCardMaker.CustomCardMaker.structure.ElementIcon;
+import LegendaryCardMaker.LegendaryVillainMaker.GaussianFilter;
+import LegendaryCardMaker.LegendaryVillainMaker.VillainCardType;
 
 public class CustomCardMaker extends CardMaker {
 	
@@ -81,9 +86,90 @@ public class CustomCardMaker extends CardMaker {
 		return card;
 	}
 	
+	private BufferedImage blackoutImage(BufferedImage image) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        for (int xx = 0; xx < width; xx++) {
+            for (int yy = 0; yy < height; yy++) {
+                Color originalColor = new Color(image.getRGB(xx, yy), true);
+                //System.out.println(xx + "|" + yy + " color: " + originalColor.toString() + "alpha: " + originalColor.getAlpha());
+                if (originalColor.getAlpha() > 0) {
+                    image.setRGB(xx, yy, Color.BLACK.getRGB());
+                }
+            }
+        }
+        return image;
+    }
+	
+	private BufferedImage expandBlackout(BufferedImage image, int expandBlackout)
+	{
+		BufferedImage expand = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
+		
+		int width = image.getWidth();
+        int height = image.getHeight();
+
+        for (int xx = 0; xx < width; xx++) {
+            for (int yy = 0; yy < height; yy++) {
+                Color originalColor = new Color(image.getRGB(xx, yy), true);
+                
+                if (originalColor.getAlpha() > 0) {
+                	//Quick and Dirty - Just ignore out of bounds
+                	for (int i = expandBlackout; i > 0; i--)
+                	{
+                		try { expand.setRGB(xx, yy - i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx, yy + i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx - i, yy, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx + i, yy, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	
+                    	if (i == 1)
+                    	{
+                    	try { expand.setRGB(xx - i, yy - i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx - i, yy + i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx + i, yy - i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	try { expand.setRGB(xx + i, yy + i, Color.BLACK.getRGB()); } catch (Exception e) {}
+                    	}
+                	}
+                }
+            }
+        }
+        return expand;
+	}
+	
+	private void drawUnderlay(BufferedImage bi, Graphics2D g, int type, int x, int y, int blurRadius, boolean doubleBlur, int expandBlackout)
+	{
+		BufferedImage blackout = new BufferedImage(cardWidth, cardHeight, type);
+		getGraphics(blackout).drawImage(bi, x, y, null);
+    	
+    	blackout = blackoutImage(blackout);
+    	
+    	if (expandBlackout > 0)
+    	{
+    		blackout = expandBlackout(blackout, expandBlackout);
+    	}
+    	
+    	if (blurRadius > 0)
+    	{
+    		BufferedImageOp op = new GaussianFilter( blurRadius );
+        	BufferedImage bi2 = op.filter(blackout, null);
+        	g.drawImage(bi2, 0, 0, null);
+        	
+        	if (doubleBlur)
+        	{
+        		BufferedImage bi3 = op.filter(bi2, null);
+        		g.drawImage(bi3, 0, 0, null);
+        	}
+    	}
+    	else
+    	{
+    		g.drawImage(blackout, 0, 0, null);
+    	}
+	}
+	
 	public BufferedImage generateCard()
 	{
 		int type = BufferedImage.TYPE_INT_ARGB;
+
 		if (exportToPNG)
 		{
 			type = BufferedImage.TYPE_INT_ARGB;	
@@ -104,6 +190,57 @@ public class CustomCardMaker extends CardMaker {
 	    	}
 	    }
 	    
+	    System.out.println("Card name = "+card.template.templateName);
+	    
+	    // Card Name
+        String textToDraw = null;
+        int x=0,y=0;
+		int fontsize = 40;
+
+        if ("master_strike".equals(card.template.templateName)) {
+        	fontsize = 40;
+        	textToDraw = Messages.getString("Card."+"MasterStrike").toUpperCase();
+           	x = 100;
+           	y = 795;
+        } else if ("scheme_twist".equals(card.template.templateName)) {
+        	fontsize = 35;
+        	textToDraw = Messages.getString("Card."+"Twist").toUpperCase();
+        	x = 100;
+           	y = 795;
+        } 
+
+        //BufferedImage bi = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
+        if (textToDraw != null) {
+        	BufferedImage bi = new BufferedImage(cardWidth, cardHeight, BufferedImage.TYPE_INT_ARGB);
+        	Graphics2D g2 = getGraphics(bi);
+	        g2.setColor(Color.WHITE);
+	        Font font = null;
+	        try
+	    	{
+		    	font = Font.createFont(Font.TRUETYPE_FONT, new File("Percolator.ttf"));
+		        font = font.deriveFont((float)fontsize);
+		        g2.setFont(font);
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		e.printStackTrace();
+	    		
+	    		font = new Font("Percolator", Font.PLAIN, fontsize);
+	    		g2.setFont(font);
+	    	}
+		    g2.setFont(font);
+		    FontMetrics metrics = g2.getFontMetrics(font);
+	        
+	        g2.drawString(textToDraw, x , y);
+	        drawUnderlay(bi,g2, type, 0, 0, 5, true, 2);
+		    g2.drawString(textToDraw, x , y);
+
+		    g.drawImage(bi, 0, 0, null);
+		    g.dispose();
+        }
+	    
+	    	
+	    	
 	    if (exportImage)
 	    {
 	    	exportImage(image);
