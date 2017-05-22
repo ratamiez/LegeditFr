@@ -163,6 +163,12 @@ public class SchemeMaker extends CardMaker {
 	    	g.drawImage(bi, card.imageOffsetX, card.imageOffsetY, null);
 	    }
 		
+	    
+	    // Back of card
+    	ImageIcon ii1 = null;
+    	ii1 = new ImageIcon(templateFolder + File.separator + "scheme" + File.separator + "scheme_back_underlay.png");
+    	g.drawImage(resizeImage(ii1, cardWidth, cardHeight), 0, 0, null);
+    	
 	 // Card Text
 	    if (card.cardText != null)
 	    {
@@ -278,7 +284,7 @@ public class SchemeMaker extends CardMaker {
 		    				}
 		    			}
 		    			
-		    			System.out.println("header: " + headerStr + ", card: " + cardStr);
+		    			System.out.println("header: " + headerStr + ", card: " + cardStr+" color = "+card.cardType.getBgColor().toString());
 		    			
 		    			if (headerStr != null && !headerStr.isEmpty())
 		    			{

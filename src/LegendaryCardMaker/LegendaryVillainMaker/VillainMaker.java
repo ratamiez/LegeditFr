@@ -220,9 +220,11 @@ public class VillainMaker extends CardMaker {
 	    	ImageIcon ii = new ImageIcon(templateFolder + File.separator + "villain_henchmen" + File.separator + "back_underlay.png");
 	    	g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
 	    }
-	    if (card.cardType != null && card.cardType.equals(VillainCardType.MASTERMIND))
+	    if (card.cardType != null && card.cardType.equals(VillainCardType.MASTERMIND_TACTIC))
 	    {	
-	    	
+	    	ImageIcon ii = new ImageIcon(templateFolder + File.separator + "villain_mastermind" + File.separator + "back_underlay_tactic.png");
+	    	g.drawImage(resizeImage(ii, cardWidth, cardHeight), 0, 0, null);
+	    		    	
 	    }
 	    if (card.cardType != null && card.cardType.equals(VillainCardType.BYSTANDER))
 	    {
